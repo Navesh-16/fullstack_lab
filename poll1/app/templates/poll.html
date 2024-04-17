@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contest Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .contest-info {
+            margin-bottom: 20px;
+        }
+
+        .contest-logo {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        .contest-party {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h2>Contest Information</h2>
+    {% for i in data %}
+    <div class="container">
+                
+        <div class="contest-info">
+            <h3>{{i.contest_name}}</h3>
+            <img src="{{i.contest_logo}}" alt="Contest Logo" class="contest-logo">
+            <p class="contest-party">{{contest_party}}</p>
+            <form  action="{% url 'vvpat' %}" method="post">
+                {% csrf_token %}
+                <input name="c_id"  type="text" hidden value="{{i.contest_id}}">
+                <button class="view-btn">Vote</button>
+            </form>
+            
+        </div>
+        
+    </div>
+    {% endfor %}
+</body>
+</html>

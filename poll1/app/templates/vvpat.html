@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VVPAT Image</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .vvpat-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://assets.sentinelassam.com/h-upload/2021/03/10/206645-vvpat.webp');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.5; /* Adjust opacity as needed */
+        }
+
+        .center-image {
+            position: relative; 
+            right:245px;
+            top:180px;
+            
+        }
+        img {
+            max-width: 200px; 
+            max-height: 200px;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="vvpat-background"></div>
+        <div class="center-image">
+
+            <img src="{{data.contest_logo}}" alt="Your Image" >
+            <form accept="{% url 'polling' %}" method="post">
+                {% csrf_token %}
+                    <input name="c_id"  type="text" hidden value="{{data.contest_id}}">
+                    <h1>{{data.contest_party}} - {{data.contest_name}}</h1>
+                    
+            </form>
+        </div>
+        
+    </div>
+    <script>
+        
+        setTimeout(function() {
+            window.location.href = "{% url 'vote' %}";
+        }, 5000); 
+    </script>
+</body>
+</html>
