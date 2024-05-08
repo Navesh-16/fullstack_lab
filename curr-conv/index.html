@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <h1>Currency Converter</h1>
+    <form id="currencyConverterForm">
+        <label for="amount">Amount: </label>
+        <input type="number" step=".01" id="amount" name="amount"><br>
+        <br>
+        <label for="fromCurrency">From:</label>
+        <input type="text" id="fromCurrency" name="fromCurrency">
+        <label for="toCurrency">To:</label>
+        <input type="text" id="toCurrency" name="toCurrency">
+        <button type="submit">Convert</button>
+    </form>
+    <div id="result"></div>
+
+    <script src="index.js" type="module"></script>
+</body>
+</html>
